@@ -1,0 +1,21 @@
+# Normalize text files to LF in repo, CRLF on Windows checkout
+* text=auto
+# Treat images/videos/configs as binary
+*.png  -text
+*.jpg  -text
+*.jpeg -text
+*.gif  -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.webm filter=lfs diff=lfs merge=lfs -text
+*.bag  -text
+*.pdf  -text
+*.yaml text
+*.yml  text
+*.xml  text
+*.launch  text
+*.py  text
+*.cpp text
+*.hpp text
+*.c   text
+*.h   text
+*.md  text

@@ -1,0 +1,21 @@
+# ROS/colcon/catkin build outputs
+build/
+devel/
+install/
+log/
+.colcon*
+CMakeFiles/
+CMakeCache.txt
+*.pyc
+__pycache__/
+
+# VSCode & OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Crash or temp
+*.swp
+*.swo
+*.tmp
+*.bak
