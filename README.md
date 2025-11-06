@@ -1008,151 +1008,9 @@ htop
 jtop
 ```
 
----
-
-## 🔬 Research Context & Development
-
-### Academic Foundation
-
-This system was developed as part of a Master's thesis research project, building upon and extending previous work in indoor localization:
-
-**Previous Research Integrated**:
-- **Radar Localization** (Jansen, 2024): mmWave radar ICP-based positioning
-- **Visual Odometry** (Häusler, 2024): Motion vector extraction for firefighter tracking
-- **Radar Signal Processing** (Rautenberg, 2024): 4D radar firmware and confidence metrics
-- **UWB Reference Systems** (Heeren, 2024): Ground truth tracking infrastructure
-
-### Novel Contributions
-
-This thesis introduces several key innovations:
-
-1. **Unified Multi-Sensor Fusion Framework**
-   - First integration of radar + visual + inertial + barometric + step counting
-   - Real-time EKF implementation optimized for human walking dynamics
-
-2. **Dynamic Uncertainty Modeling**
-   - Confidence-based covariance scaling for radar and camera subsystems
-   - Self-evaluation metrics propagated through fusion pipeline
-
-3. **Asynchronous Measurement Handling**
-   - Priority queue fusion buffer supporting out-of-order sensor data
-   - Per-sensor constant delay compensation
-   - Robust operation during ROS bag playback
-
-4. **Complete SCBA Integration**
-   - Compact, battery-powered hardware design
-   - Thermal management for Jetson Orin in enclosed space
-   - Field-ready mechanical assembly
-
-5. **3D Localization with Floor Transitions**
-   - Barometric altitude fusion for vertical positioning
-   - Validated stair climbing accuracy <0.3m
-
-### Development Organization
-
-**Conducted at**: Drägerwerk AG & Co. KGaA  
-**Department**: Corporate Technology and Innovation (CTI)  
-**Location**: Lübeck, Germany  
-**Duration**: May 2025 - June 2025
-
-**Supervision**:
-- **Academic Advisor**: Prof. Dr. Lucila Patiño Studencki (Hochschule Coburg)
-- **Industry Supervisor**: Dr. Christoph Osterloh (Dräger CTI)
-
-**Thesis Document**: `Multi_Sensor_Data_Fusion_for_Indoor_Localization.pdf`
-
-### Testing Environment
-
-**Primary Facility**: Haus 20 (Dräger test building)
-- Multi-floor indoor environment
-- Variable lighting conditions (windows + artificial)
-- Mix of narrow corridors and open spaces
-- Staircase for vertical evaluation
-- Total test path: 110-120 meters per lap
-
-**Ground Truth System**: Professional UWB tracking (18 anchors, <0.5m accuracy)
 
 ---
 
-## 🔮 Future Work
-
-### Planned Enhancements
-
-#### Short-Term Improvements
-
-1. **Adaptive Translation Scale**
-   - Replace fixed visual odometry scale with dynamic adjustment
-   - Use radar or step counter as validation reference
-   - Compensate for varying walking speeds automatically
-
-2. **Higher Step Counter Frequency**
-   - Increase update rate from 1 Hz to 5-10 Hz
-   - Implement interpolation between step events
-   - Reduce latency in fusion updates
-
-3. **Complete Timestamp Synchronization**
-   - Hardware-level sensor triggering
-   - PTP (Precision Time Protocol) for network time sync
-   - Eliminate remaining timing artifacts
-
-4. **Extended Range Testing**
-   - Validate performance over 300+ meter continuous paths
-   - Assess long-term yaw drift characteristics
-   - Benchmark loop closure over multiple laps
-
-#### Medium-Term Extensions
-
-5. **Loop Closure Detection**
-   - Implement place recognition using radar signatures
-   - Automatic drift correction when returning to known locations
-   - Graph-based SLAM optimization backend
-
-6. **Multi-Agent Collaboration**
-   - Share maps between multiple firefighters
-   - Relative positioning between team members
-   - Distributed sensor fusion
-
-7. **Smoke Simulation Testing**
-   - Controlled smoke generation in test facility
-   - Validate radar-only operation mode
-   - Camera failure recovery behavior
-
-8. **Deep Learning Integration**
-   - Semantic segmentation of radar point clouds
-   - Motion vector quality prediction
-   - Learned sensor fusion weights
-
-#### Long-Term Vision
-
-9. **Commercial Product Development**
-   - Miniaturization (reduce to <1 kg total weight)
-   - Extended battery life (8+ hours)
-   - Ruggedized enclosure (IP67 rating)
-   - Integrated HMI for firefighter interface
-
-10. **Multi-Domain Applications**
-    - Soldier tracking for military operations
-    - Search and rescue robot navigation
-    - Drone indoor flight control
-    - Industrial worker safety tracking
-
----
-
-## 📚 References
-
-### Key Publications
-
-1. **Jansen, O.** (2024). *Konzeption und Implementierung von Algorithmen zur Verbesserung der Ortungsgenauigkeit eines mmWave Radar Systems zur Personenrettung*. Master's thesis, Hochschule Hannover.
-
-2. **Häusler, S.** (2024). *Camera-based Tracking of Firefighters Under Limited Visibility*. Master's thesis, Universität zu Lübeck.
-
-3. **Rautenberg, F.** (2024). *Analyse und Optimierung der Messung und Berechnung eines bewegten bildgebenden 4D-Radars zur Personenlokalisierung*. Master's thesis, Hochschule Hannover.
-
-4. **Heeren, M. E.** (2024). *Entwicklung und Evaluierung eines portablen und autark einsetzbaren Referenzsystems für draht- und infrastrukturlose Indoor-Ortungssysteme*. Master's thesis, Technische Hochschule Lübeck.
-
-5. **Rantakokko, J., Strömbäck, P., Emilsson, E., & Rydell, J.** (2012). Soldier positioning in GNSS denied operations. *Proceedings of the International Conference on Indoor Positioning and Indoor Navigation (IPIN)*.
-
-6. **Patiño Studencki, L.** (2024). *Sensor Data Fusion: Estimation Using the Extended Kalman Filter*. Lecture notes, Coburg University of Applied Sciences and Arts.
 
 ### Technical Documentation
 
@@ -1178,37 +1036,6 @@ This project is proprietary research conducted for **Drägerwerk AG & Co. KGaA**
 
 ---
 
-## 👥 Authors and Contact
-
-### Primary Author
-**Ibrahim Al Dabbagh**  
-Master's Program: Autonomous Driving  
-Hochschule für angewandte Wissenschaften Coburg  
-Email: [contact details]
-
-### Academic Supervision
-**Prof. Dr. Lucila Patiño Studencki**  
-Faculty of Mechanical and Automotive Technology  
-Coburg University of Applied Sciences and Arts
-
-### Industry Supervision
-**Dr. Christoph Osterloh**  
-Corporate Technology and Innovation (CTI)  
-Drägerwerk AG & Co. KGaA
-
----
-
-## 🙏 Acknowledgments
-
-Special thanks to:
-
-- **Drägerwerk AG & Co. KGaA** for providing resources, hardware, and test facilities
-- **Prof. Dr. Lucila Patiño Studencki** for academic guidance and EKF methodology
-- **Dr. Christoph Osterloh** for technical mentorship and research direction
-- **Previous thesis students** (Jansen, Häusler, Rautenberg, Heeren) whose foundational work enabled this integration
-- **CTI Team at Dräger** for technical support and collaboration
-
----
 
 ## 📊 Quick Reference Tables
 
@@ -1232,15 +1059,6 @@ Special thanks to:
 | CPU Usage | **~60%** | Jetson Orin Nano (6 cores) |
 | Power Consumption | **~15 W** | Full system with all sensors |
 | Battery Runtime | **4+ hours** | 3S2P 18650 pack |
-
-### Comparison to State-of-the-Art
-| System | Error (m) | Vertical | Multi-Sensor | Infrastructure-Free |
-|--------|-----------|----------|--------------|---------------------|
-| This Work | **0.27** | ✅ | ✅ | ✅ |
-| Jansen (Radar) | 2.84 | ❌ | ❌ | ✅ |
-| Häusler (Camera) | <0.5 | ⚠️ | ❌ | ✅ |
-| Rantakokko (IMU+Steps) | 2-4 | ✅ | ✅ | ✅ |
-| UWB (Heeren) | 0.5 | ✅ | ❌ | ❌ |
 
 ---
 
@@ -1269,33 +1087,42 @@ Before your first run, ensure:
 
 ---
 
-## 📞 Support and Contributions
+## 👥 Authors and Contact
 
-### Reporting Issues
+### Primary Author
+**Ibrahim Al Dabbagh**  
+Master's Program: Autonomous Driving  
+Hochschule für angewandte Wissenschaften Coburg  
+Email: [contact details]
 
-If you encounter problems:
+### Academic Supervision
+**Prof. Dr. Lucila Patiño Studencki**  
+Faculty of Mechanical and Automotive Technology  
+Coburg University of Applied Sciences and Arts
 
-1. **Check troubleshooting section** above
-2. **Verify hardware connections** (USB, power, I2C)
-3. **Review ROS logs**: `ros2 topic list`, `ros2 topic echo`, `ros2 node list`
-4. **Record diagnostic bag** for offline analysis
+### Industry Supervision
+**Dr. Christoph Osterloh**  
+Corporate Technology and Innovation (CTI)  
+Drägerwerk AG & Co. KGaA
 
-### Research Collaboration
-
-Interested in extending this work? Contact the authors regarding:
-- Multi-agent systems integration
-- Additional sensor modalities
-- Real-world deployment testing
-- Commercial product development
-
----
-
-**🔥 Built for those who run toward danger, not away from it. 🔥**
-
-*Enhancing safety for firefighters, soldiers, and first responders through advanced 3D SLAM technology.*
 
 ---
+## 📚 References
 
+### Key Publications
+
+1. **Jansen, O.** (2024). *Konzeption und Implementierung von Algorithmen zur Verbesserung der Ortungsgenauigkeit eines mmWave Radar Systems zur Personenrettung*. Master's thesis, Hochschule Hannover.
+
+2. **Häusler, S.** (2024). *Camera-based Tracking of Firefighters Under Limited Visibility*. Master's thesis, Universität zu Lübeck.
+
+3. **Rautenberg, F.** (2024). *Analyse und Optimierung der Messung und Berechnung eines bewegten bildgebenden 4D-Radars zur Personenlokalisierung*. Master's thesis, Hochschule Hannover.
+
+4. **Heeren, M. E.** (2024). *Entwicklung und Evaluierung eines portablen und autark einsetzbaren Referenzsystems für draht- und infrastrukturlose Indoor-Ortungssysteme*. Master's thesis, Technische Hochschule Lübeck.
+
+5. **Rantakokko, J., Strömbäck, P., Emilsson, E., & Rydell, J.** (2012). Soldier positioning in GNSS denied operations. *Proceedings of the International Conference on Indoor Positioning and Indoor Navigation (IPIN)*.
+
+6. **Patiño Studencki, L.** (2024). *Sensor Data Fusion: Estimation Using the Extended Kalman Filter*. Lecture notes, Coburg University of Applied Sciences and Arts.
+---
 **Last Updated**: November 2024  
 **Version**: 1.0  
 **Status**: Research Prototype → Field Testing Phase
