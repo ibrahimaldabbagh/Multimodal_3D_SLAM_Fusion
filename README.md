@@ -149,7 +149,9 @@ The **4D mmWave radar subsystem** uses custom firmware (available in `mmWaveRada
 ### Mechanical Design
 
 <p align="center">
-<img src="images/hardware_CAD.png" alt="Physical System" width="40%"/>
+<img src="images/hardware_CAD1.png" alt="Physical System" width="40%"/>
+<img src="images/hardware_CAD2.png" alt="Physical System" width="40%"/>
+
 </p>
 
 **Features**:
@@ -160,6 +162,25 @@ The **4D mmWave radar subsystem** uses custom firmware (available in `mmWaveRada
 - Cable routing channels
 - Total weight: ~2.5 kg with batteries
 
+### Coordinate Frame System
+
+<p align="center">
+<img src="images/sensor_frames_tf.png" alt="Sensor Coordinate Frames" width="70%"/>
+</p>
+
+The system uses a rigorous **TF (Transform) tree** to maintain spatial consistency across all sensors:
+
+**Key Frames**:
+- **`odom`**: Global reference frame, fixed at system start (origin: 0,0,0)
+- **`base_link`**: Body-fixed frame attached to the SCBA mounting unit
+- **`base_imu`**: Primary IMU orientation reference (aligned with base_link)
+- **`ti_mmwave_{0,1,2,3}`**: Individual radar sensor frames with calibrated orientations
+- **`camera_frame_{1,2}`**: Left and right camera frames (tilted 25° downward)
+
+**Calibrated Transforms**:
+All sensors maintain fixed, pre-calibrated spatial relationships to `base_link`. This eliminates the need for online extrinsic calibration and ensures consistent multi-sensor fusion. The radar array provides 360° horizontal coverage with partial vertical FOV, while cameras capture motion-rich floor regions for visual odometry.
+
+**TF Broadcasting**: Static transforms are published at system launch, with dynamic `odom → base_link` updated by the EKF at 100Hz.
 ---
 
 ## 📁 Repository Structure
@@ -683,6 +704,33 @@ The accumulated radar point cloud demonstrates:
 - Consistent spatial structure over 100+ meter paths
 - Minimal drift in map alignment
 
+ ### 3D Occupancy Mapping
+
+<p align="center">
+<img src="images/occupancy_map_3d.png" alt="3D Occupancy Map" width="85%"/>
+</p>
+
+The radar subsystem generates a **3D occupancy map** by accumulating filtered point clouds during operation:
+
+**Mapping Process**:
+1. **Segmented Accumulation**: Point clouds stored in 2-meter spatial chunks
+2. **Multi-Layer Filtering**: Statistical outlier removal + elevation filtering + radius-based culling
+3. **Persistent Storage**: Map maintained throughout mission for loop closure detection
+4. **Real-Time Updates**: New scans integrated every 70ms with ICP alignment
+
+**Map Features**:
+- **White/Gray Points**: Detected radar reflections (walls, corners, obstacles)
+- **Green Path**: Fused trajectory overlay showing operator movement
+- **Spatial Resolution**: ~5cm point density in well-observed areas
+- **Coverage**: Full 360° behind operator with 8.4m maximum range
+
+The occupancy map clearly shows **building structure** including:
+- Hallway boundaries and width variations
+- Room entrances and corners
+- Stairwell geometry (vertical features from tilted radar)
+- Open spaces vs. narrow corridors
+
+This map enables situational awareness for remote monitoring teams and supports future loop closure for drift correction.
 ---
 
 ## 🎨 Visualization and Mapping
