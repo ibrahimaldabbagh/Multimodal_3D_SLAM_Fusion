@@ -707,7 +707,7 @@ The accumulated radar point cloud demonstrates:
  ### 3D Occupancy Mapping
 
 <p align="center">
-<img src="images/occupancy_map_3d.png" alt="3D Occupancy Map" width="85%"/>
+<img src="images/occupancy.png" alt="Occupancy Map" width="85%"/>
 </p>
 
 The radar subsystem generates a **3D occupancy map** by accumulating filtered point clouds during operation:
