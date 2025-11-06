@@ -1,7 +1,7 @@
 # 3D SLAM: Multi-Sensor Fusion for Real-Time Indoor Localization
 
 <p align="center">
-<img src="images/3D_Mapping.png" alt="3D SLAM System in Action" width="100%"/>
+<img src="images/3D_Mapping.png" alt="3D SLAM System in Action" width="50%"/>
 </p>
 
 ---
@@ -66,32 +66,32 @@ The system implements a modular **Driver → 3D SLAM → Visualization** archite
 ### Architecture Layers
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    DRIVER LAYER                             │
-│  • 4× Radar Point Cloud Publishers                         │
-│  • 2× Camera Motion Vector Extractors                      │
-│  • 2× IMU Interfaces (Orientation + Steps)                 │
-│  • Barometric Altitude Publisher                           │
-└─────────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                    3D SLAM LAYER                            │
-│  • Radar Preprocessing & Filtering                         │
-│  • ICP Point Cloud Registration                            │
-│  • Visual Odometry Pose Estimation                         │
-│  • Extended Kalman Filter (EKF) Fusion                     │
-│  • Dynamic Covariance Scaling                              │
-│  • Asynchronous Measurement Handling                       │
-└─────────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                 VISUALIZATION LAYER                         │
-│  • Real-Time Trajectory Plotting                           │
-│  • Point Cloud Accumulation                                │
-│  • Covariance Ellipsoid Display                            │
-│  • Multi-Sensor Path Comparison                            │
-│  • RViz2 3D Visualization                                  │
-└─────────────────────────────────────────────────────────────┘
+                          ┌─────────────────────────────────────────────────────────────┐
+                          │                    DRIVER LAYER                             │
+                          │  • 4× Radar Point Cloud Publishers                         │
+                          │  • 2× Camera Motion Vector Extractors                      │
+                          │  • 2× IMU Interfaces (Orientation + Steps)                 │
+                          │  • Barometric Altitude Publisher                           │
+                          └─────────────────────────────────────────────────────────────┘
+                                                    ↓
+                          ┌─────────────────────────────────────────────────────────────┐
+                          │                    3D SLAM LAYER                            │
+                          │  • Radar Preprocessing & Filtering                         │
+                          │  • ICP Point Cloud Registration                            │
+                          │  • Visual Odometry Pose Estimation                         │
+                          │  • Extended Kalman Filter (EKF) Fusion                     │
+                          │  • Dynamic Covariance Scaling                              │
+                          │  • Asynchronous Measurement Handling                       │
+                          └─────────────────────────────────────────────────────────────┘
+                                                    ↓
+                          ┌─────────────────────────────────────────────────────────────┐
+                          │                 VISUALIZATION LAYER                         │
+                          │  • Real-Time Trajectory Plotting                           │
+                          │  • Point Cloud Accumulation                                │
+                          │  • Covariance Ellipsoid Display                            │
+                          │  • Multi-Sensor Path Comparison                            │
+                          │  • RViz2 3D Visualization                                  │
+                          └─────────────────────────────────────────────────────────────┘
 ```
 
 ### Extended Kalman Filter Design
@@ -99,7 +99,7 @@ The system implements a modular **Driver → 3D SLAM → Visualization** archite
 The heart of the system is a custom **8-state EKF** implementing constant velocity and constant yaw-rate motion model:
 
 <p align="center">
-<img src="images/Fusion_buffer.png" alt="EKF Integration" width="80%"/>
+<img src="images/Fusion_buffer.png" alt="EKF Integration" width="60%"/>
 </p>
 
 **State Vector**: `[x, y, z, vx, vy, vz, ψ, ψ̇]`
@@ -149,7 +149,7 @@ The **4D mmWave radar subsystem** uses custom firmware (available in `mmWaveRada
 ### Mechanical Design
 
 <p align="center">
-<img src="images/hardware_CAD.png" alt="Physical System" width="85%"/>
+<img src="images/hardware_CAD.png" alt="Physical System" width="400%"/>
 </p>
 
 **Features**:
@@ -675,7 +675,7 @@ Professional UWB tracking system used as reference (±0.5m accuracy):
 ### Point Cloud Mapping
 
 <p align="center">
-<img src="images/full_lap_3DSLAM.png" alt="Accumulated Point Cloud Map" width="100%"/>
+<img src="images/full_lap_3DSLAM.png" alt="Accumulated Point Cloud Map" width="60%"/>
 </p>
 
 The accumulated radar point cloud demonstrates:
