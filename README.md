@@ -66,32 +66,32 @@ The system implements a modular **Driver → 3D SLAM → Visualization** archite
 ### Architecture Layers
 
 ```
-                                        ┌─────────────────────────────────────────────────────────────┐
-                                        │                    DRIVER LAYER                             │
-                                        │  • 4× Radar Point Cloud Publishers                         │
-                                        │  • 2× Camera Motion Vector Extractors                      │
-                                        │  • 2× IMU Interfaces (Orientation + Steps)                 │
-                                        │  • Barometric Altitude Publisher                           │
-                                        └─────────────────────────────────────────────────────────────┘
-                                                                  ↓
-                                        ┌─────────────────────────────────────────────────────────────┐
-                                        │                    3D SLAM LAYER                            │
-                                        │  • Radar Preprocessing & Filtering                         │
-                                        │  • ICP Point Cloud Registration                            │
-                                        │  • Visual Odometry Pose Estimation                         │
-                                        │  • Extended Kalman Filter (EKF) Fusion                     │
-                                        │  • Dynamic Covariance Scaling                              │
-                                        │  • Asynchronous Measurement Handling                       │
-                                        └─────────────────────────────────────────────────────────────┘
-                                                                  ↓
-                                        ┌─────────────────────────────────────────────────────────────┐
-                                        │                 VISUALIZATION LAYER                         │
-                                        │  • Real-Time Trajectory Plotting                           │
-                                        │  • Point Cloud Accumulation                                │
-                                        │  • Covariance Ellipsoid Display                            │
-                                        │  • Multi-Sensor Path Comparison                            │
-                                        │  • RViz2 3D Visualization                                  │
-                                        └─────────────────────────────────────────────────────────────┘
+                                     ┌─────────────────────────────────────────────────────────────┐
+                                     │                    DRIVER LAYER                             │
+                                     │  • 4× Radar Point Cloud Publishers                         │
+                                     │  • 2× Camera Motion Vector Extractors                      │
+                                     │  • 2× IMU Interfaces (Orientation + Steps)                 │
+                                     │  • Barometric Altitude Publisher                           │
+                                     └─────────────────────────────────────────────────────────────┘
+                                                               ↓
+                                     ┌─────────────────────────────────────────────────────────────┐
+                                     │                    3D SLAM LAYER                            │
+                                     │  • Radar Preprocessing & Filtering                         │
+                                     │  • ICP Point Cloud Registration                            │
+                                     │  • Visual Odometry Pose Estimation                         │
+                                     │  • Extended Kalman Filter (EKF) Fusion                     │
+                                     │  • Dynamic Covariance Scaling                              │
+                                     │  • Asynchronous Measurement Handling                       │
+                                     └─────────────────────────────────────────────────────────────┘
+                                                               ↓
+                                     ┌─────────────────────────────────────────────────────────────┐
+                                     │                 VISUALIZATION LAYER                         │
+                                     │  • Real-Time Trajectory Plotting                           │
+                                     │  • Point Cloud Accumulation                                │
+                                     │  • Covariance Ellipsoid Display                            │
+                                     │  • Multi-Sensor Path Comparison                            │
+                                     │  • RViz2 3D Visualization                                  │
+                                     └─────────────────────────────────────────────────────────────┘
 ```
 
 ### Extended Kalman Filter Design
@@ -707,7 +707,7 @@ The accumulated radar point cloud demonstrates:
  ### 3D Occupancy Mapping
 
 <p align="center">
-<img src="images/occupancy.png" alt="Occupancy Map" width="85%"/>
+<img src="images/occupancy.png" alt="Occupancy Map" width="50%"/>
 </p>
 
 The radar subsystem generates a **3D occupancy map** by accumulating filtered point clouds during operation:
