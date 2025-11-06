@@ -1,7 +1,7 @@
 # 3D SLAM: Multi-Sensor Fusion for Real-Time Indoor Localization
 
 <p align="center">
-<img src="images/visual.png" alt="3D SLAM System in Action" width="100%"/>
+<img src="images/3D_Mapping.png" alt="3D SLAM System in Action" width="100%"/>
 </p>
 
 ---
@@ -60,7 +60,7 @@ Traditional localization methods fail in critical scenarios:
 The system implements a modular **Driver → 3D SLAM → Visualization** architecture built on ROS 2:
 
 <p align="center">
-<img src="images/architecture_diagram.png" alt="System Architecture" width="100%"/>
+<img src="images/architecture.png" alt="System Architecture" width="100%"/>
 </p>
 
 ### Architecture Layers
@@ -99,7 +99,7 @@ The system implements a modular **Driver → 3D SLAM → Visualization** archite
 The heart of the system is a custom **8-state EKF** implementing constant velocity and constant yaw-rate motion model:
 
 <p align="center">
-<img src="images/ekf_diagram.png" alt="EKF Integration" width="80%"/>
+<img src="images/Fusion_buffer.png" alt="EKF Integration" width="80%"/>
 </p>
 
 **State Vector**: `[x, y, z, vx, vy, vz, ψ, ψ̇]`
@@ -135,10 +135,6 @@ The **4D mmWave radar subsystem** uses custom firmware (available in `mmWaveRada
 - **Output**: Up to 180 points per scan every 70ms
 - **Mounting**: 4 radars at 0°, 45° up, 135° left, -135° right
 
-<p align="center">
-<img src="images/cad_render.png" alt="System CAD Design" width="70%"/>
-</p>
-
 ### Computing Platform
 
 - **Processor**: NVIDIA Jetson Orin Nano Super
@@ -153,7 +149,7 @@ The **4D mmWave radar subsystem** uses custom firmware (available in `mmWaveRada
 ### Mechanical Design
 
 <p align="center">
-<img src="images/system_assembly.png" alt="Physical System" width="85%"/>
+<img src="images/hardware_CAD.png" alt="Physical System" width="85%"/>
 </p>
 
 **Features**:
@@ -667,8 +663,8 @@ Closed-loop tests in multi-floor building (Haus 20, ~115m per lap):
 Professional UWB tracking system used as reference (±0.5m accuracy):
 
 <p align="center">
-<img src="images/fused_path_floor1.png" alt="Ground Floor Path" width="45%"/>
-<img src="images/fused_path_floor2.png" alt="First Floor Path" width="45%"/>
+<img src="images/fused_full_lap.png" alt="Ground Floor Path" width="45%"/>
+<img src="images/fused.png" alt="First Floor Path" width="45%"/>
 </p>
 
 **Metrics**:
@@ -679,7 +675,7 @@ Professional UWB tracking system used as reference (±0.5m accuracy):
 ### Point Cloud Mapping
 
 <p align="center">
-<img src="images/pointcloud_map.png" alt="Accumulated Point Cloud Map" width="100%"/>
+<img src="images/full_lap_3DSLAM.png" alt="Accumulated Point Cloud Map" width="100%"/>
 </p>
 
 The accumulated radar point cloud demonstrates:
@@ -694,7 +690,7 @@ The accumulated radar point cloud demonstrates:
 ### Real-Time Trajectory Display
 
 <p align="center">
-<img src="images/live_visualization.png" alt="Live Multi-Sensor Paths" width="100%"/>
+<img src="images/3D_Mapping.png" alt="Live Multi-Sensor Paths" width="100%"/>
 </p>
 
 The system provides simultaneous visualization of:
