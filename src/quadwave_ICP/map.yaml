@@ -1,0 +1,7 @@
+image: /home/jansenol/Projekt/MultiRadar_Bender/MultiBender/src/Bender_Location/resource/Rotate.png
+resolution: 0.068
+origin: [14,2,2.65] ## 13_49
+#origin: [20.,12, 3.2] ## 13_35
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196

@@ -1,0 +1,158 @@
+# Multimodal Fusion with CA Model - Configuration
+# Copyright (c) 2025
+# License: MIT
+
+fusion_core_ca:
+  ros__parameters:
+    # ========== FRAME IDs ==========
+    world_frame: "odom"
+    base_frame: "base_link"
+    imu_frame: "imu_link"
+    
+    # ========== TOPIC NAMES ==========
+    imu_topic: "/imu/data"
+    visual_pose_topic: "/mvslam/pose"
+    radar_pose_topic: "/radar/pose"
+    baro_topic: "/baro/altitude"
+    wheel_odo_topic: "/wheel/odom"
+    step_topic: "/step_count"
+    gnss_topic: "/gnss/fix"
+    lidar_topic: "/lidar/points"
+    velocity_topic: "/velocity"
+    
+    # ========== ESKF-CA PROCESS NOISE ==========
+    # Gyroscope noise (rad/s/√Hz)
+    sigma_gyro: 1.5e-3
+    
+    # Accelerometer noise (m/s²/√Hz)
+    sigma_accel: 3.0e-2
+    
+    # Gyro bias random walk (rad/s²/√Hz)
+    sigma_gyro_bias: 1.0e-5
+    
+    # Accel bias random walk (m/s³/√Hz)
+    sigma_accel_bias: 5.0e-5
+    
+    # Velocity random walk (m/s/√Hz)
+    sigma_velocity: 1.0e-3
+    
+    # Acceleration random walk (m/s³/√Hz)
+    sigma_acceleration: 5.0e-3
+    
+    # Angular velocity noise (rad/s/√Hz)
+    sigma_angular_velocity: 1.0e-4
+    
+    # Angular acceleration noise (rad/s²/√Hz)
+    sigma_angular_accel: 1.0e-3
+    
+    # ========== MEASUREMENT VARIANCES ==========
+    # Visual SLAM position variance (m²)
+    visual_pos_variance: 0.25
+    
+    # Visual SLAM yaw variance (rad²)
+    visual_yaw_variance: 0.01
+    
+    # Radar ICP position variance (m²)
+    radar_pos_variance: 0.04
+    
+    # Barometer altitude variance (m²)
+    baro_variance: 0.25
+    
+    # GNSS horizontal variance (m²)
+    gnss_horizontal_variance: 4.0
+    
+    # GNSS vertical variance (m²)
+    gnss_vertical_variance: 9.0
+    
+    # Wheel odometry variance (m²)
+    wheel_odo_variance: 0.01
+    
+    # Step counter distance variance (m²)
+    step_variance: 0.25
+    
+    # External velocity variance (m²/s²)
+    velocity_variance: 0.01
+    
+    # ========== OUTLIER REJECTION ==========
+    # Mahalanobis distance threshold
+    mahalanobis_gate: 16.0
+    
+    # ========== MAPPING PARAMETERS ==========
+    # Voxel size (m)
+    voxel_size: 0.2
+    
+    # Maximum mapping range (m)
+    max_mapping_range: 50.0
+    
+    # ========== LOOP CLOSURE ==========
+    # Enable loop closure detection
+    enable_loop_closure: true
+    
+    # Loop closure detection distance (m)
+    loop_closure_distance: 5.0
+    
+    # Loop closure match threshold
+    loop_closure_match_threshold: 0.6
+    
+    # ========== STEP COUNTER ==========
+    # Average step length (m)
+    step_length: 0.7
+    
+    # ========== GNSS ==========
+    # Enable GNSS fusion
+    use_gnss: false
+    
+    # GNSS minimum satellite count
+    gnss_min_satellites: 6
+    
+    # GNSS minimum fix quality (0: invalid, 1: GPS, 2: DGPS, 3: PPS, 4: RTK, 5: Float RTK)
+    gnss_min_fix_quality: 1
+    
+    # ========== ADVANCED TUNING ==========
+    # Initial state uncertainties
+    init_pos_variance: 1.0
+    init_vel_variance: 0.1
+    init_acc_variance: 0.01
+    init_att_variance: 0.01
+    init_gyro_bias_variance: 1.0e-4
+    init_accel_bias_variance: 1.0e-3
+    init_angular_vel_variance: 0.01
+    init_angular_acc_variance: 0.001
+    
+    # Adaptive covariance tuning
+    enable_adaptive_tuning: true
+    innovation_window_size: 50
+    
+    # Gravity vector (m/s²)
+    gravity_x: 0.0
+    gravity_y: 0.0
+    gravity_z: -9.81
+    
+    # ========== PERFORMANCE ==========
+    # Maximum buffer size
+    max_buffer_size: 1000
+    
+    # Processing frequency (Hz)
+    processing_rate: 500
+    
+    # Visualization downsampling factor
+    visualization_decimation: 5
+    
+    # Map pruning interval (iterations)
+    map_prune_interval: 1000
+    
+    # Map pruning time threshold (update counts)
+    map_prune_threshold: 1000
+    
+    # ========== DEBUGGING ==========
+    # Publish diagnostics
+    publish_diagnostics: true
+    
+    # Diagnostics publish rate (Hz)
+    diagnostics_rate: 10.0
+    
+    # Verbose logging
+    verbose: false
+    
+    # Log covariance
+    log_covariance: false

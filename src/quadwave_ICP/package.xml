@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>quadmmwave_slam</name>
+  <version>0.1.0</version>
+  <description>4‑Directional mmWave Radar SLAM (ICP‑based) with IMU aid, robust registration, and probabilistic mapping.</description>
+  <maintainer email="replace@you.com">Replace Me</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>pcl_conversions</depend>
+  <exec_depend>pcl_ros</exec_depend>
+</package>
