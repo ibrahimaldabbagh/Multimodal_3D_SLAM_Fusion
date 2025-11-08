@@ -7,7 +7,7 @@
 [![C++17](https://img.shields.io/badge/C++-17-00599C.svg)](https://isocpp.org/)
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB.svg)](https://www.python.org/)
 
-**Advanced sensor fusion framework for GPS-denied 3D navigation and mapping**
+**Advanced 3D localization, navigation, mapping, and multimodal fusion framework for GPS-denied/ Gnss-denied enviroment**
 
 </div>
 
@@ -53,7 +53,11 @@ The system addresses critical challenges in **indoor navigation**, **underground
 
 ![3D Mapping](images/3D_Mapping.png)
 
-*Dense 3D reconstruction from fused multi-sensor data with temporal color encoding*
+
+</div>
+<div align="center">
+
+   *Dense 3D reconstruction from fused multi-sensor data with temporal color encoding*
 
 </div>
 
@@ -96,13 +100,7 @@ The system addresses critical challenges in **indoor navigation**, **underground
 - Along-track distance from step counter kinematics
 - Yaw observations from orientation estimates
 
-<div align="center">
 
-![Occupancy Grid](images/occupancy.png)
-
-*2D occupancy grid with probabilistic log-odds Bayesian updates*
-
-</div>
 
 ### Intelligent Mapping Backend
 
@@ -121,6 +119,11 @@ The system addresses critical challenges in **indoor navigation**, **underground
 <div align="center">
 
 ![Live Demo](images/demo.gif)
+
+</div>
+
+<div align="center">
+
 *Real-time SLAM operation showing incremental map construction*
 
 </div>
@@ -159,6 +162,10 @@ The system follows a **modular ROS 2-native design** with independent perception
 <div align="center">
 
 ![Full Lap](images/full_lap_3DSLAM.png)
+
+</div>
+
+<div align="center">
 
 *Complete trajectory showing loop closure performance in XY plane*
 
@@ -229,9 +236,13 @@ Four directional millimeter-wave radar sensors (60-77 GHz) provide complementary
 
 ![Fused Trajectory](images/fused_full_lap.png)
 
-*Final fused trajectory overlaid on accumulated 3D map*
+</div>
+<div align="center">
+
+    *Final fused trajectory*
 
 </div>
+
 
 ### 3. Barometric Altimeter
 
@@ -271,7 +282,7 @@ Pedometer-based displacement provides complementary motion information when visu
 
 **Motion-Vector Stereo Visual Odometry**
 
-Core stereo+IMU visual odometry implementing Lucas-Kanade tracking with depth from disparity:
+Dual camera + IMU visual odometry implementing Lucas-Kanade tracking with depth from disparity:
 
 **Key Components**
 - Shi-Tomasi corner detection with quality threshold
@@ -461,6 +472,14 @@ l(m|z) = l(m|z_{1:t-1}) + log(P(m|z_t) / (1 - P(m|z_t)))
 
 Bresenham line algorithm traces rays from sensor origin to occupied endpoints, updating freespace cells with negative log-odds and endpoints with positive log-odds.
 
+<div align="center">
+
+![Full Lap](images/occupancy.png)
+
+*Probabilistic Occupancy Mapping with Bresenham line algorithm*
+
+</div>
+
 ---
 
 ## 🛠️ Installation
@@ -625,48 +644,6 @@ ros2 topic echo /fused/pose --no-arr
 
 ---
 
-## 📊 Experimental Results
-
-### Test Scenario
-
-**Environment**: Indoor office corridor with rectangular loop closure  
-**Total Path Length**: Approximately 80 meters  
-**Duration**: 120 seconds  
-**Lighting**: Mixed natural and artificial with some direct sunlight  
-**Motion Profile**: Handheld sensor rig at walking pace (~1.0 m/s)  
-**Active Sensors**: Stereo camera (30 Hz), 4× mmWave radar (15 Hz), IMU (200 Hz), Barometer (20 Hz)
-
-### Trajectory Analysis
-
-The system successfully completed a full loop with consistent trajectory estimation. Key observations:
-
-**Drift Characteristics**
-- Gradual XY drift accumulation over 80m path
-- Z-axis well-constrained by barometric altitude
-- Loop closure error: 0.52 m absolute position offset
-
-**Sensor Contribution**
-- Visual odometry: Primary motion constraint in textured areas
-- Radar ICP: Stabilization in corridors and feature-poor regions
-- Barometer: Vertical drift prevention
-- IMU: High-frequency attitude and acceleration
-
-### Qualitative Assessment
-
-**Strengths Demonstrated**
-- Robust operation through partial visual occlusion
-- Consistent altitude tracking despite no vertical visual features
-- Successful loop closure without explicit loop detection
-- Real-time performance on consumer hardware
-
-**Observed Limitations**
-- Visual odometry quality degrades in textureless white corridors
-- Radar returns become sparse in large open areas
-- Step counter accumulates unbounded error over distance
-- No global relocalization capability (pure odometry)
-
----
-
 ## 🔧 Technical Specifications
 
 ### Computational Performance
@@ -726,29 +703,6 @@ The system successfully completed a full loop with consistent trajectory estimat
 - No explicit loop closure optimization applied
 
 ---
-
-## 🔍 Implementation Notes
-
-### Design Philosophy
-
-This implementation prioritizes **architectural clarity** and **educational value** over production optimization. The modular structure allows independent testing and validation of each subsystem.
-
-### Simplifications for Portfolio
-
-Several aspects are intentionally simplified:
-- No full SLAM backend with pose graph optimization
-- Simplified camera-radar temporal calibration
-- Basic loop closure detection (geometric only)
-- Reduced robustness to extreme sensor failures
-
-### Domain Applicability
-
-The demonstrated architecture is relevant for:
-- **Indoor robotics**: Warehouse automation, service robots
-- **Underground navigation**: Mining, tunneling, cave exploration
-- **Low-visibility scenarios**: Smoke, dust, fog environments
-- **GPS-denied operation**: Urban canyons, dense foliage
-
 ### Code Organization
 
 Each package is self-contained with minimal cross-dependencies, facilitating:
