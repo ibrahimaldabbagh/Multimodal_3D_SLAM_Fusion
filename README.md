@@ -51,7 +51,7 @@ The system addresses critical challenges in **indoor navigation**, **underground
 
 <div align="center">
 
-![3D Mapping](3D_Mapping.png)
+![3D Mapping](images/3D_Mapping.png)
 *Dense 3D reconstruction from fused multi-sensor data with temporal color encoding*
 
 </div>
@@ -97,7 +97,7 @@ The system addresses critical challenges in **indoor navigation**, **underground
 
 <div align="center">
 
-![Occupancy Grid](occupancy.png)
+![Occupancy Grid](images/occupancy.png)
 *2D occupancy grid with probabilistic log-odds Bayesian updates*
 
 </div>
@@ -118,7 +118,7 @@ The system addresses critical challenges in **indoor navigation**, **underground
 
 <div align="center">
 
-![Live Demo](demo.gif)
+![Live Demo](images/demo.gif)
 *Real-time SLAM operation showing incremental map construction*
 
 </div>
@@ -156,7 +156,7 @@ The system follows a **modular ROS 2-native design** with independent perception
 
 <div align="center">
 
-![Full Lap](full_lap_3DSLAM.png)
+![Full Lap](images/full_lap_3DSLAM.png)
 *Complete trajectory showing loop closure performance in XY plane*
 
 </div>
@@ -224,7 +224,7 @@ Four directional millimeter-wave radar sensors (60-77 GHz) provide complementary
 
 <div align="center">
 
-![Fused Trajectory](fused_full_lap.png)
+![Fused Trajectory](images/fused_full_lap.png)
 *Final fused trajectory overlaid on accumulated 3D map*
 
 </div>
