@@ -712,4 +712,9 @@ Each package is self-contained with minimal cross-dependencies, facilitating:
 - Clear separation of concerns
 
 ---
+> ⚠️ **Portfolio — Proprietary Notice**
+> 
+> This repository is part of my personal portfolio — **viewing only**.  
+> Do **not** copy, fork, modify, reuse, or redistribute any files without written permission.  
+> © 2025 Ibrahim Aldabbagh — **All rights reserved.**
 
