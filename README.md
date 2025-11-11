@@ -159,17 +159,6 @@ The system follows a **modular ROS 2-native design** with independent perception
 3. **Constraint enforcement**: Barometer provides 1D altitude constraint, step counter provides along-track displacement
 4. **Map integration**: Aligned point clouds accumulated in world frame with probabilistic occupancy updates
 
-<div align="center">
-
-![Full Lap](images/full_lap_3DSLAM.png)
-
-</div>
-
-<div align="center">
-
-*Complete trajectory showing loop closure performance in XY plane*
-
-</div>
 
 ---
 
@@ -232,11 +221,6 @@ Four directional millimeter-wave radar sensors (60-77 GHz) provide complementary
 - `quadmmwave_icp_core.cpp`: ICP odometry with keyframe logic
 - `quadmmwave_mapping.cpp`: Mapping backend with occupancy grid
 
-<div align="center">
-
-![Fused Trajectory](images/fused_full_lap.png)
-
-</div>
 <div align="center">
 
     *Final fused trajectory*
